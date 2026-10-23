@@ -60,7 +60,10 @@ class Method_MLP(method, nn.Module):
 
     def train(self, X, y):
         # Initialize optimizer and loss function
-        optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
+        optimizer = torch.optim.SGD(
+            self.parameters(),
+            lr=self.learning_rate
+        )
         loss_function = nn.CrossEntropyLoss()
 
         # Convert the entire dataset to PyTorch tensors

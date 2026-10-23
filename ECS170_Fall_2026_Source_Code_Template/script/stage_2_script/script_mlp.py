@@ -77,7 +77,7 @@ plt.title('MLP Training Convergence')
 plt.grid(True)
 
 plt.savefig(
-    '../../result/stage_2_result/training_loss.png',
+    '../../result/stage_2_result/training_loss1.png',
     dpi=300,
     bbox_inches='tight'
 )
