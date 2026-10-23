@@ -1,0 +1,11 @@
+.venv/
+venv/
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+
+# Keep datasets and generated results local
+ECS170_Fall_2026_Source_Code_Template/data/
+ECS170_Fall_2026_Source_Code_Template/result/
