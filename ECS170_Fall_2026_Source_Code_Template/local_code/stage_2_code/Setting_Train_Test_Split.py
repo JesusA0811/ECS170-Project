@@ -18,19 +18,20 @@ class Setting_Train_Test_Split(setting):
         self.dataset.dataset_source_file_name = 'train.csv'
         train_data = self.dataset.load()
 
+        # Use the separate test file to evaluate on examples not used for training.
         self.dataset.dataset_source_file_name = 'test.csv'
         test_data = self.dataset.load()
 
-        # Pass both datasets to the MLP
+        # run MethodModule
+        # use the provided training and testing datasets
         self.method.data = {
             'train': train_data,
             'test': test_data
         }
 
-        # Train and test the model
         learned_result = self.method.run()
 
-        # Save results
+        # save raw ResultModule
         self.result.data = learned_result
         self.result.fold_count = 0
         self.result.save()

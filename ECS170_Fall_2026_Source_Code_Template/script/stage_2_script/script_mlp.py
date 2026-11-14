@@ -10,14 +10,15 @@ import numpy as np
 import torch
 import os
 
-# ---- Multi-Layer Perceptron script ----
+#---- Multi-Layer Perceptron script ----
 if 1:
-    # ---- parameter section -------------------------------
+    #---- parameter section -------------------------------
+    # Fix the random seeds to make runs more repeatable on the same setup.
     np.random.seed(2)
     torch.manual_seed(2)
-    # ------------------------------------------------------
+    #------------------------------------------------------
 
-    # ---- object initialization section -------------------
+    # ---- objection initialization setction ---------------
     data_obj = Dataset_Loader('stage 2 training', '')
     data_obj.dataset_source_folder_path = '../../data/stage_2_data/'
     data_obj.dataset_source_file_name = 'train.csv'
@@ -45,12 +46,7 @@ if 1:
     # ---- running section ---------------------------------
     print('************ Start ************')
 
-    setting_obj.prepare(
-        data_obj,
-        method_obj,
-        result_obj,
-        evaluate_obj
-    )
+    setting_obj.prepare(data_obj, method_obj, result_obj, evaluate_obj)
 
     setting_obj.print_setup_summary()
 
@@ -65,6 +61,7 @@ if 1:
 # ---- Training Convergence Plot ----
 plt.figure(figsize=(8, 5))
 
+# Plot the average training loss from each epoch to see how learning progresses.
 plt.plot(
     range(1, len(method_obj.loss_history) + 1),
     method_obj.loss_history,
@@ -76,6 +73,7 @@ plt.ylabel('Training Loss')
 plt.title('MLP Training Convergence')
 plt.grid(True)
 
+# Save the graph so it can be included in the report.
 plt.savefig(
     '../../result/stage_2_result/training_loss1.png',
     dpi=300,

@@ -24,6 +24,8 @@ class Evaluate_Accuracy(evaluate):
         pred_y = self.data['pred_y']
 
         accuracy = accuracy_score(true_y, pred_y)
+        # Weighted scores give each digit a share based on how many test examples it has.
+        # zero_division=0 uses 0 when a score cannot be calculated.
         precision = precision_score(
             true_y, pred_y, average='weighted',
             zero_division=0
@@ -42,6 +44,7 @@ class Evaluate_Accuracy(evaluate):
         print('Weighted Recall:', recall)
         print('Weighted F1:', f1)
 
+        # Return accuracy because the experiment setup expects a single score.
         return accuracy
 
         
